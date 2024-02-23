@@ -10,8 +10,9 @@
 
 //#define STUB_FUNCS
 #ifdef STUB_FUNCS
-void shutdown2(char * msg) {
-  syscall(SYS_shutdown2, msg);
+void shutdown2(char * msg) 
+{
+	syscall(SYS_shutdown2, msg);
 }
 #endif
 

@@ -82,6 +82,8 @@ argstr(int n, char **pp)
   return fetchstr(addr, pp);
 }
 
+extern int sys_shutdown(void); //my addition for shutdown (1)
+extern int sys_shutdown2(void); //my addition for shutdown2
 extern int sys_chdir(void);
 extern int sys_close(void);
 extern int sys_dup(void);
@@ -103,8 +105,6 @@ extern int sys_unlink(void);
 extern int sys_wait(void);
 extern int sys_write(void);
 extern int sys_uptime(void);
-extern int sys_shutdown(void);
-extern int sys_shutdown2(void);
 
 static int (*syscalls[])(void) = {
 [SYS_fork]    sys_fork,
@@ -128,8 +128,8 @@ static int (*syscalls[])(void) = {
 [SYS_link]    sys_link,
 [SYS_mkdir]   sys_mkdir,
 [SYS_close]   sys_close,
-[SYS_shutdown] sys_shutdown,
-[SYS_suhtdown2]  sys_shutdown,
+[SYS_shutdown] sys_shutdown, //my addition for shutdown (1)
+[SYS_shutdown2] sys_shutdown2, //my addition for shutdown2
 };
 
 void

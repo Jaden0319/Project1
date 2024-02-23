@@ -78,19 +78,21 @@ sys_sleep(void)
   return 0;
 }
 
-void
-sys_shutdown(void){
-  outw(ox604, 0x2000);
+void sys_shutdown(void) //my addition shutdown (1)
+{
+	outw(0x604, 0x2000);
 }
 
-int sys_shutdown2(void){
-  char *msg;
-  if(argstr(0,&msg) < 0)
-    return -1;
-  cprintf("Shutdown message: %s\n", msg);
-  outw(0x604, 0x2000);
+int sys_shutdown2(void) //my addition shutdown2
+{
+	char *msg;
+	if(argstr(0, &msg) < 0)
+		return -1;
+		
+	cprintf("Shutdown message: %s\n", msg);
+	outw(0x604, 0x2000); //shutdown command from sys_shutdown
 }
-
+		
 // return how many clock tick interrupts have occurred
 // since start.
 int
