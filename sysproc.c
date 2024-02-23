@@ -6,6 +6,7 @@
 #include "memlayout.h"
 #include "mmu.h"
 #include "proc.h"
+#include "syscall.h"
 
 int
 sys_fork(void)
@@ -79,10 +80,16 @@ sys_sleep(void)
 
 void
 sys_shutdown(void){
-  //interupt to enter kernel mode
-  shutdown();
+  outw(ox604, 0x2000);
 }
 
+int sys_shutdown2(void){
+  char *msg;
+  if(argstr(0,&msg) < 0)
+    return -1;
+  cprintf("Shutdown message: %s\n", msg);
+  outw(0x604, 0x2000);
+}
 
 // return how many clock tick interrupts have occurred
 // since start.
