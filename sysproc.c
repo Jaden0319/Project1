@@ -7,6 +7,7 @@
 #include "mmu.h"
 #include "proc.h"
 
+
 int
 sys_fork(void)
 {
@@ -81,6 +82,20 @@ void
 sys_shutdown(void){
   //interupt to enter kernel mode
   shutdown();
+}
+
+int sys_exit2(void) {
+
+  int n;
+  int i;
+  
+  int status;
+  if(argint(n, &i) < 0)  {
+    exit2(0);
+  }
+
+  exit2(status);
+  return 0;  
 }
 
 

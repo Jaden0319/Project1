@@ -24,6 +24,8 @@ char* sbrk(int);
 int sleep(int);
 int uptime(void);
 void shutdown(void);
+int exit2(int);
+
 
 // ulib.c
 int stat(char*, struct stat*);

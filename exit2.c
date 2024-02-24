@@ -9,7 +9,10 @@
 
 #define STUB_FUNCS
 #ifdef STUB_FUNCS
-void exit2(int status) {}
+int exit2(int status) {
+
+   syscall(SYS_exit2, status);
+}
 #endif
 
 
