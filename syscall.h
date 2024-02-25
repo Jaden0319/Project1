@@ -23,3 +23,4 @@
 #define SYS_shutdown  22 //my addition for shutdown (1)
 #define SYS_shutdown2  23 //my addition for shutdown2 
 #define SYS_mkdir2  24
+#define SYS_exit2   25

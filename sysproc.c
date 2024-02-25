@@ -8,6 +8,7 @@
 #include "proc.h"
 #include "syscall.h"
 
+
 int
 sys_fork(void)
 {
@@ -91,6 +92,23 @@ int sys_shutdown2(void) //my addition shutdown2
 		
 	cprintf("Shutdown message: %s\n", msg);
 	outw(0x604, 0x2000); //shutdown command from sys_shutdown
+}
+
+int sys_exit2(void) {
+
+  int status;
+  int n;
+  int i;
+
+  if(argint(n, &i) < 0)  {
+
+      cprintf("Status: %d\n failed", status);
+      exit();
+  }
+
+  cprintf("Status: %d\n", status);
+  exit();
+  return 0;  
 }
 		
 // return how many clock tick interrupts have occurred
