@@ -22,6 +22,7 @@
 0000063b fstat
 00000613 kill
 00000653 chdir
+000006a3 uptime2
 0000061b exec
 000005eb wait
 000005fb read

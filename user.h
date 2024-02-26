@@ -27,6 +27,7 @@ int shutdown(void); //my addition to shutdown (1)
 int shutdown2(char* msg); //my addition to shutdown2
 int mkdir2(char*, char*);
 int exit2(int);
+int uptime2(int);
 
 // ulib.c
 int stat(char*, struct stat*);

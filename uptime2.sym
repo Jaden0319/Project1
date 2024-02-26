@@ -4,8 +4,8 @@
 000003b0 printint
 00000874 digits.0
 00000000 umalloc.c
-00000b24 freep
-00000b28 base
+00000b14 freep
+00000b18 base
 000000a0 strcpy
 00000450 printf
 000002b0 memmove
@@ -20,7 +20,7 @@
 0000033b fstat
 00000313 kill
 00000353 chdir
-00000090 uptime2
+000003a3 uptime2
 0000031b exec
 000002eb wait
 000002fb read
@@ -28,7 +28,7 @@
 000002db fork
 0000036b sbrk
 0000037b uptime
-00000b24 __bss_start
+00000b14 __bss_start
 00000160 memset
 00000000 main
 00000393 mkdir2
@@ -36,8 +36,8 @@
 00000383 shutdown
 0000035b dup
 00000220 stat
-00000b24 _edata
-00000b30 _end
+00000b14 _edata
+00000b20 _end
 00000343 link
 000002e3 exit
 00000270 atoi

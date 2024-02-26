@@ -2047,10 +2047,12 @@ SYSCALL(exit2)
      deb:	b8 19 00 00 00       	mov    $0x19,%eax
      df0:	cd 40                	int    $0x40
      df2:	c3                   	ret
-     df3:	66 90                	xchg   %ax,%ax
-     df5:	66 90                	xchg   %ax,%ax
-     df7:	66 90                	xchg   %ax,%ax
-     df9:	66 90                	xchg   %ax,%ax
+
+00000df3 <uptime2>:
+SYSCALL(uptime2)
+     df3:	b8 1a 00 00 00       	mov    $0x1a,%eax
+     df8:	cd 40                	int    $0x40
+     dfa:	c3                   	ret
      dfb:	66 90                	xchg   %ax,%ax
      dfd:	66 90                	xchg   %ax,%ax
      dff:	90                   	nop

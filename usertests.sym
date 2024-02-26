@@ -41,6 +41,7 @@
 00003180 validatetest
 000027e0 rmdot
 00003923 chdir
+00003973 uptime2
 000009d0 exectest
 000038eb exec
 000038bb wait

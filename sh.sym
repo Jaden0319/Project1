@@ -33,6 +33,7 @@
 00000d63 kill
 00000da3 chdir
 00000870 parseline
+00000df3 uptime2
 00000190 runcmd
 00000950 parseblock
 00000d6b exec

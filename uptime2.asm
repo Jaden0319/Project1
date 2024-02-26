@@ -16,84 +16,81 @@ main(int argc, char * argv[])
    7:	ff 71 fc             	push   -0x4(%ecx)
    a:	55                   	push   %ebp
    b:	89 e5                	mov    %esp,%ebp
-   d:	51                   	push   %ecx
-   e:	83 ec 10             	sub    $0x10,%esp
-  11:	8b 41 04             	mov    0x4(%ecx),%eax
+   d:	53                   	push   %ebx
+   e:	51                   	push   %ecx
+   f:	8b 41 04             	mov    0x4(%ecx),%eax
 	int i = atoi(argv[1]);
-  14:	ff 70 04             	push   0x4(%eax)
-  17:	e8 54 02 00 00       	call   270 <atoi>
+  12:	83 ec 0c             	sub    $0xc,%esp
+  15:	ff 70 04             	push   0x4(%eax)
+  18:	e8 53 02 00 00       	call   270 <atoi>
     
     // "msg" now holds the shutdown message provided by the user
     //shutdown2(msg);
 	
     if(i<1 || i>3)
-  1c:	83 c4 10             	add    $0x10,%esp
-  1f:	8d 50 ff             	lea    -0x1(%eax),%edx
-  22:	83 fa 02             	cmp    $0x2,%edx
-  25:	77 35                	ja     5c <main+0x5c>
+  1d:	83 c4 10             	add    $0x10,%esp
+	int i = atoi(argv[1]);
+  20:	89 c3                	mov    %eax,%ebx
+    if(i<1 || i>3)
+  22:	83 e8 01             	sub    $0x1,%eax
+  25:	83 f8 02             	cmp    $0x2,%eax
+  28:	77 3f                	ja     69 <main+0x69>
         printf(1,"Available options for uptime output: \n[\n1=seconds,\n2=days,\n3=years\n]");
     
     uint ut = uptime2(i);
+  2a:	83 ec 0c             	sub    $0xc,%esp
+  2d:	53                   	push   %ebx
+  2e:	e8 70 03 00 00       	call   3a3 <uptime2>
 
     if(i == 1){
-  27:	83 f8 01             	cmp    $0x1,%eax
-  2a:	74 19                	je     45 <main+0x45>
+  33:	83 c4 10             	add    $0x10,%esp
+  36:	83 fb 01             	cmp    $0x1,%ebx
+  39:	74 18                	je     53 <main+0x53>
         printf(1, "Current Uptime in ticks: %d", ut);
     } else if(i == 2){
-  2c:	83 f8 02             	cmp    $0x2,%eax
-  2f:	74 3e                	je     6f <main+0x6f>
+  3b:	83 fb 02             	cmp    $0x2,%ebx
+  3e:	74 44                	je     84 <main+0x84>
         printf(1, "Current Uptime in seconds: %d", ut);
     } else if(i == 3){
         printf(1, "Current Uptime in minutes: %d", ut);
-  31:	50                   	push   %eax
-  32:	6a 00                	push   $0x0
-  34:	68 f7 07 00 00       	push   $0x7f7
-  39:	6a 01                	push   $0x1
-  3b:	e8 10 04 00 00       	call   450 <printf>
-  40:	83 c4 10             	add    $0x10,%esp
-  43:	eb 12                	jmp    57 <main+0x57>
+  40:	52                   	push   %edx
+  41:	50                   	push   %eax
+  42:	68 f7 07 00 00       	push   $0x7f7
+  47:	6a 01                	push   $0x1
+  49:	e8 02 04 00 00       	call   450 <printf>
+  4e:	83 c4 10             	add    $0x10,%esp
+  51:	eb 11                	jmp    64 <main+0x64>
         printf(1, "Current Uptime in ticks: %d", ut);
-  45:	51                   	push   %ecx
-  46:	6a 00                	push   $0x0
-  48:	68 bd 07 00 00       	push   $0x7bd
-  4d:	6a 01                	push   $0x1
-  4f:	e8 fc 03 00 00       	call   450 <printf>
-  54:	83 c4 10             	add    $0x10,%esp
+  53:	53                   	push   %ebx
+  54:	50                   	push   %eax
+  55:	68 bd 07 00 00       	push   $0x7bd
+  5a:	6a 01                	push   $0x1
+  5c:	e8 ef 03 00 00       	call   450 <printf>
+  61:	83 c4 10             	add    $0x10,%esp
     }
 
     exit(); //return 0;
-  57:	e8 87 02 00 00       	call   2e3 <exit>
+  64:	e8 7a 02 00 00       	call   2e3 <exit>
         printf(1,"Available options for uptime output: \n[\n1=seconds,\n2=days,\n3=years\n]");
-  5c:	50                   	push   %eax
-  5d:	50                   	push   %eax
-  5e:	68 78 07 00 00       	push   $0x778
-  63:	6a 01                	push   $0x1
-  65:	e8 e6 03 00 00       	call   450 <printf>
+  69:	50                   	push   %eax
+  6a:	50                   	push   %eax
+  6b:	68 78 07 00 00       	push   $0x778
+  70:	6a 01                	push   $0x1
+  72:	e8 d9 03 00 00       	call   450 <printf>
+    uint ut = uptime2(i);
+  77:	89 1c 24             	mov    %ebx,(%esp)
+  7a:	e8 24 03 00 00       	call   3a3 <uptime2>
     } else if(i == 3){
-  6a:	83 c4 10             	add    $0x10,%esp
-  6d:	eb e8                	jmp    57 <main+0x57>
+  7f:	83 c4 10             	add    $0x10,%esp
+  82:	eb e0                	jmp    64 <main+0x64>
         printf(1, "Current Uptime in seconds: %d", ut);
-  6f:	52                   	push   %edx
-  70:	6a 00                	push   $0x0
-  72:	68 d9 07 00 00       	push   $0x7d9
-  77:	6a 01                	push   $0x1
-  79:	e8 d2 03 00 00       	call   450 <printf>
-  7e:	83 c4 10             	add    $0x10,%esp
-  81:	eb d4                	jmp    57 <main+0x57>
-  83:	66 90                	xchg   %ax,%ax
-  85:	66 90                	xchg   %ax,%ax
-  87:	66 90                	xchg   %ax,%ax
-  89:	66 90                	xchg   %ax,%ax
-  8b:	66 90                	xchg   %ax,%ax
-  8d:	66 90                	xchg   %ax,%ax
-  8f:	90                   	nop
-
-00000090 <uptime2>:
-int uptime2(int i) {return 0;}
-  90:	31 c0                	xor    %eax,%eax
-  92:	c3                   	ret
-  93:	66 90                	xchg   %ax,%ax
-  95:	66 90                	xchg   %ax,%ax
+  84:	51                   	push   %ecx
+  85:	50                   	push   %eax
+  86:	68 d9 07 00 00       	push   $0x7d9
+  8b:	6a 01                	push   $0x1
+  8d:	e8 be 03 00 00       	call   450 <printf>
+  92:	83 c4 10             	add    $0x10,%esp
+  95:	eb cd                	jmp    64 <main+0x64>
   97:	66 90                	xchg   %ax,%ax
   99:	66 90                	xchg   %ax,%ax
   9b:	66 90                	xchg   %ax,%ax
@@ -636,10 +633,12 @@ SYSCALL(exit2)
  39b:	b8 19 00 00 00       	mov    $0x19,%eax
  3a0:	cd 40                	int    $0x40
  3a2:	c3                   	ret
- 3a3:	66 90                	xchg   %ax,%ax
- 3a5:	66 90                	xchg   %ax,%ax
- 3a7:	66 90                	xchg   %ax,%ax
- 3a9:	66 90                	xchg   %ax,%ax
+
+000003a3 <uptime2>:
+SYSCALL(uptime2)
+ 3a3:	b8 1a 00 00 00       	mov    $0x1a,%eax
+ 3a8:	cd 40                	int    $0x40
+ 3aa:	c3                   	ret
  3ab:	66 90                	xchg   %ax,%ax
  3ad:	66 90                	xchg   %ax,%ax
  3af:	90                   	nop
@@ -969,7 +968,7 @@ free(void *ap)
 
   bp = (Header*)ap - 1;
   for(p = freep; !(bp > p && bp < p->s.ptr); p = p->s.ptr)
- 601:	a1 24 0b 00 00       	mov    0xb24,%eax
+ 601:	a1 14 0b 00 00       	mov    0xb14,%eax
 {
  606:	89 e5                	mov    %esp,%ebp
  608:	57                   	push   %edi
@@ -1016,7 +1015,7 @@ free(void *ap)
 }
  641:	5b                   	pop    %ebx
   freep = p;
- 642:	89 15 24 0b 00 00    	mov    %edx,0xb24
+ 642:	89 15 14 0b 00 00    	mov    %edx,0xb14
 }
  648:	5e                   	pop    %esi
  649:	5f                   	pop    %edi
@@ -1044,7 +1043,7 @@ free(void *ap)
     p->s.size += bp->s.size;
  677:	03 43 fc             	add    -0x4(%ebx),%eax
   freep = p;
- 67a:	89 15 24 0b 00 00    	mov    %edx,0xb24
+ 67a:	89 15 14 0b 00 00    	mov    %edx,0xb14
     p->s.size += bp->s.size;
  680:	89 42 04             	mov    %eax,0x4(%edx)
     p->s.ptr = bp->s.ptr;
@@ -1077,7 +1076,7 @@ malloc(uint nbytes)
   nunits = (nbytes + sizeof(Header) - 1)/sizeof(Header) + 1;
  699:	8b 45 08             	mov    0x8(%ebp),%eax
   if((prevp = freep) == 0){
- 69c:	8b 15 24 0b 00 00    	mov    0xb24,%edx
+ 69c:	8b 15 14 0b 00 00    	mov    0xb14,%edx
   nunits = (nbytes + sizeof(Header) - 1)/sizeof(Header) + 1;
  6a2:	8d 78 07             	lea    0x7(%eax),%edi
  6a5:	c1 ef 03             	shr    $0x3,%edi
@@ -1115,7 +1114,7 @@ malloc(uint nbytes)
     }
     if(p == freep)
  6d9:	89 c2                	mov    %eax,%edx
- 6db:	39 05 24 0b 00 00    	cmp    %eax,0xb24
+ 6db:	39 05 14 0b 00 00    	cmp    %eax,0xb14
  6e1:	75 ed                	jne    6d0 <malloc+0x40>
   p = sbrk(nu * sizeof(Header));
  6e3:	83 ec 0c             	sub    $0xc,%esp
@@ -1133,7 +1132,7 @@ malloc(uint nbytes)
  6fd:	50                   	push   %eax
  6fe:	e8 fd fe ff ff       	call   600 <free>
   return freep;
- 703:	8b 15 24 0b 00 00    	mov    0xb24,%edx
+ 703:	8b 15 14 0b 00 00    	mov    0xb14,%edx
       if((p = morecore(nunits)) == 0)
  709:	83 c4 10             	add    $0x10,%esp
  70c:	85 d2                	test   %edx,%edx
@@ -1162,7 +1161,7 @@ malloc(uint nbytes)
         p->s.size = nunits;
  72c:	89 78 04             	mov    %edi,0x4(%eax)
       freep = prevp;
- 72f:	89 15 24 0b 00 00    	mov    %edx,0xb24
+ 72f:	89 15 14 0b 00 00    	mov    %edx,0xb14
 }
  735:	8d 65 f4             	lea    -0xc(%ebp),%esp
       return (void*)(p + 1);
@@ -1174,15 +1173,15 @@ malloc(uint nbytes)
  73e:	5d                   	pop    %ebp
  73f:	c3                   	ret
     base.s.ptr = freep = prevp = &base;
- 740:	c7 05 24 0b 00 00 28 	movl   $0xb28,0xb24
+ 740:	c7 05 14 0b 00 00 18 	movl   $0xb18,0xb14
  747:	0b 00 00 
     base.s.size = 0;
- 74a:	b8 28 0b 00 00       	mov    $0xb28,%eax
+ 74a:	b8 18 0b 00 00       	mov    $0xb18,%eax
     base.s.ptr = freep = prevp = &base;
- 74f:	c7 05 28 0b 00 00 28 	movl   $0xb28,0xb28
+ 74f:	c7 05 18 0b 00 00 18 	movl   $0xb18,0xb18
  756:	0b 00 00 
     base.s.size = 0;
- 759:	c7 05 2c 0b 00 00 00 	movl   $0x0,0xb2c
+ 759:	c7 05 1c 0b 00 00 00 	movl   $0x0,0xb1c
  760:	00 00 00 
     if(p->s.size >= nunits){
  763:	e9 54 ff ff ff       	jmp    6bc <malloc+0x2c>

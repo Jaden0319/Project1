@@ -33,3 +33,4 @@ SYSCALL(shutdown) //my addition for shutdown (1)
 SYSCALL(shutdown2) //my addition for shutdown2
 SYSCALL(mkdir2)
 SYSCALL(exit2)
+SYSCALL(uptime2)
